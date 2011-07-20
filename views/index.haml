@@ -1,0 +1,65 @@
+#left
+  - unless APP_CONFIG['mailchimp']['disabled']
+    .rule.style1
+    #email_signup.panel
+      .content
+        %h1= email_signup :headline
+        %br
+        %p= email_signup :intro
+        %p
+          %strong= @signup
+        %form{:action => "/create", :method => "post"}
+          %h3= email_signup :call_to_action
+          .success= @notice
+          .warning= @success
+          %div
+            %input{:name => "email", :type => "text"}/
+            %br/
+          - if email_signup :image_button
+            %input#submit{:name => "submit", :type => "image", :src => "/images/themes/#{@app_theme}/button-up.png", :value => 'Submit'}/
+          - else
+            %input#submit{:name => "submit", :type => "submit", :value => 'Submit'}/
+          %input{:name => "referer", :type => "hidden", :value => request.env["HTTP_REFERER"]}/
+  .rule.style4
+  #features.panel
+    .content
+      %h2= features :headline
+      - if features(:items).empty?
+        %em= features :empty
+      - features(:items).each do |feature|
+        %img.feature{ :src => "/images/themes/#{@app_theme}/features/#{feature['image']}.png" }
+        %h3.feature= feature['name']
+        %br
+        %p.feature= feature['text']
+        .clear
+        %br
+        %br
+#right
+  .rule.style2
+  #feedback.panel
+    .content
+      %h2= feedback :headline
+      %p= feedback :intro
+      %p= feedback :call_to_action
+      .gallery
+        - if feedback(:concepts).empty?
+          %em= feedback :empty
+        - feedback(:concepts).each do |concept|
+          - if APP_CONFIG['thumbnail_domwindow']
+            %a{ :href => concept['url'], :class => 'thumb domwindow', :title => concept['name'] }
+              %img{ :src => "/images/themes/#{@app_theme}/concepts/#{concept['image']}_small.png", :title => concept['name'], :class => 'thumb' }
+          - else
+            %a{ :href => concept['url'], :class => 'thumb', :target => '_blank', :title => concept['name'] }
+              %img{ :src => "/images/themes/#{@app_theme}/concepts/#{concept['image']}_small.png", :title => concept['name'], :class => 'thumb' }
+  .rule.style3
+  #blog.panel
+    .content
+      %h2= blog :headline
+      - if @blog_posts.empty?
+        %em= blog :empty
+      - @blog_posts.each do |post|
+        .blog_post
+          %h3= post.title
+          %em= post.published.to_date.stamp 'January 1, 1989'
+          %p= post.summary
+          %a{:href => post.url} read more &rarr;

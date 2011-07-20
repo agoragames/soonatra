@@ -1,0 +1,54 @@
+!!!
+%html
+  %head
+    %title= @app_name
+    %link{ :rel => :stylesheet, :href => '/stylesheets/screen.css', :media => 'screen, projection' }
+    %link{ :rel => :stylesheet, :href => '/stylesheets/print.css', :media => 'print' }
+    /[if IE]
+      %link{ :rel => :stylesheet, :href => '/stylesheets/ie.css', :media => 'screen, projection' }
+      [endif]
+    %script{ :type => 'text/javascript', :src => '/javascripts/jquery.js' }
+    %script{ :type => 'text/javascript', :src => '/javascripts/jquery.DOMWindow.js' }
+    :javascript
+      $(document).ready(function(){
+
+        // Open thumbnail links in a DOMWindow
+        $('a.thumb.domwindow').openDOMWindow({
+          height:800,
+          width:950,
+          eventType:'click',
+          windowSource:'iframe',
+          windowPadding:0,
+          loader:1,
+          loaderImagePath:'/images/animationProcessing.gif',
+          loaderHeight:16,
+          loaderWidth:17
+        });
+
+        // Image button rollover, if enabled
+        $('#submit[type=image]').bind('mousedown',
+          function(){
+            $(this).attr({ src : '/images/themes/#{@app_theme}/button-down.png' });
+        });
+
+        $('#submit[type=image]').bind('mouseup',
+          function(){
+            $(this).attr({ src : '/images/themes/#{@app_theme}/button-up.png' });
+        });
+
+        // Focus the email signup input
+        $('input[name="email"]').focus();
+
+      });
+  %body.bp.two-col.coming-soon
+    #container
+      #bg-header
+      #header
+        #logo
+          %h1= @app_name
+      = yield
+      #footer
+        #network
+          - footer(:network).each do |link|
+            %a{:href => link['url']}= link['label']
+        #copyright= footer :copyright

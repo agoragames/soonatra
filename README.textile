@@ -1,0 +1,59 @@
+h1. Soonatra!
+
+"Sinatra":http://www.sinatrarb.com/ application to show a "Coming Soon" page and collect emails.
+
+h2. Features
+  * "Mailchimp":http://mailchimp.com/ integration
+  * Screenshots panel with DOMWindow zoom ( may I suggest collecting early feedback with "Notable":http://notableapp.com/ ?)
+  * Features list with icons
+  * Displays latest blog posts (from RSS)
+  * A/B Testing on all headlines and text
+  * Dead simple YAML-based configuration.
+  * Theme management with Compass/Blueprint and rake
+  * Airbrake (Hoptoad) integration for error reporting (optional)
+  * Designed for easy deployment to Heroku
+
+h2. Requires
+  * Ruby 1.9
+  * Redis
+
+h2. Set up
+
+# @bundle install@
+# Configure @config/config.yml@ from the example file
+# Run @rake blog:update@ to populate the blog entries from your RSS feed
+# Make sure redis is running: @redis-server@ (or use the free plan from http://redistogo.com/)
+# @bundle exec shotgun@
+# Open "localhost:9393":http://localhost:9393.
+# *Admire!*
+
+h2. Usage
+
+* Split tests are set up automatically just by setting multiple variants of the text
+in your config.yml file. They all share the same goal, convert visits to signups.
+
+* Visit /split to learn which variations are most successful and pick the winners.
+
+* View @rake -T@ for some useful tasks.
+
+h2. Themes
+
+To create a new theme, use @rake theme:new[theme_name]@. This will create a copy of
+the default theme and activate it for you.
+
+To switch between themes, use @rake theme:set[theme_name]@
+
+Support for theme-specific markup is intentionally ommitted to discourage you from wasting
+time you should be investing in your new product.
+
+*For all other documentation, refer to config/config.yml.example*
+
+h2. TODO
+* The test suite has not been updated
+
+h2. Credits
+
+Written by "Logan Koester":mailto:logan@logankoester.com
+Sponsored by "Agora Games":http://agoragames.com
+Split testing by Andrew Nesbitt's "split":https://github.com/andrew/split rubygem
+Originally based on https://github.com/renderedtext/coming-soon

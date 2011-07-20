@@ -1,0 +1,6 @@
+*.swp
+.bundle
+vendor/bundle/
+.sass-cache/
+dump.rdb
+log/*.log

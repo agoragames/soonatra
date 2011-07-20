@@ -1,0 +1,198 @@
+###############################################################################
+# Application Settings
+###############################################################################
+
+# Set the name of the product you are launching soon
+app_name: 'My Latest Invention'
+
+# These credentials will allow you into /backstage, where
+# you can download a CSV of signups.
+admin_username: 'admin'
+admin_password: 'admin'
+
+# A Redis connection is required for storing split test results and caching
+# blog posts from your feed.
+redis:
+  user:
+  password:
+  host:
+  port:
+
+# Hide the entire application behind HTTP Basic?
+http_basic: false
+
+# Is this application running on Heroku? If enabled, ActiveRecord
+# will rely on ENV['DATABASE_URL'] for PostgreSQL instead of the
+# MySQL default. Settings in database.yml will be ignored.
+use_heroku: true
+
+# Load thumbnail links in a DOMWindow?
+# If disabled, concept image links will load in a _blank window instead
+thumbnail_domwindow: true
+
+# If you want to use Hoptoad for error reporting, set your API key here
+# to enable.
+hoptoad_api_key: false
+
+# If Mailchimp integration is disabled, the panel will be hidden
+mailchimp:
+  disabled: true
+  api_key: ''
+  list_name: ''
+
+# Set the RSS feed to obtain development news posts. The latest
+# two will be displayed, updated every hour via cron.
+# You can also update the feed manually via "rake blog:update"
+blog_rss_url: 'http://your.rss/feed.xml'
+
+###############################################################################
+# Panel Content
+# 
+# This is where you write the content for your "Coming Soon" site. This is
+# where A/B testing comes in. For most text areas, you can write multiple
+# variants of your content, which will be selected from randomly.
+#
+# After a statistically useful amount of traffic has hit the page, you can
+# visit the /split panel to see which variants were most succesful in
+# converting pageviews into mailing list subscribers, and choose the best
+# option to use going forward.
+#
+###############################################################################
+
+# Write your copy for the "Email Signup" panel
+email_signup:
+
+  # Write one or more headlines to A/B test.
+  headlines:
+    - "Check back in a few days!"
+    - "Hey, it isn't here yet!"
+    - "We've got big plans!"
+
+  # Write one or more intros to A/B test.
+  intros:
+    - "Quis, iaculis eget, ante. Nulla dictum justo eu lacus. Phasellus sit amet quam. Nullam sodales. Cras non magna eu est consectetuer faucibus. Donec tempor lobortis turpis. Sed tellus velit, ullamcorper ac, fringilla vitae, sodales nec, purus. Morbi aliquet risus in mi."
+
+  # Write the signup instructions. Not A/B tested.
+  signup: "Enter your email below to gain access to latest MLG StarLeagues news and exclusive content!"
+
+  # Write one or more Call To Actions to A/B test.
+  call_to_actions:
+    - 'Keep Me Posted!'
+    - 'Stay Informed'
+    - 'Let Me Know!'
+    - "Tell Me When It's Ready!"
+
+  # Optionally use an image button. Add two files to public/images/themes/<your theme> named
+  # button-up.png and button-down.png and set image_button to true.
+  image_button: false
+
+# Write your copy for the "Features" panel
+features:
+
+  # Write one or more headlines to A/B test.
+  headlines: 
+    - 'What we are building'
+    - 'Features'
+    - 'Here is the plan'
+
+  # Write a little bit about your product's core features. You should include
+  # an icon or thumbnail to display alongside each one. Place these images in
+  # public/images/themes/<your theme>/features/*.png
+  #
+  # Note: Don't include the '.png' or path
+  items:
+    -
+      name: 'Feature #1'
+      text: 'Vitae tortor. Fusce iaculis. Aliquam rhoncus, diam quis tincidunt
+          facilisis, sem quam luctus augue, ut posuere neque sem vitae neque.'
+      image: 'example'
+    -
+      name: 'Feature #2'
+      text: 'Vitae tortor. Fusce iaculis. Aliquam rhoncus, diam quis tincidunt
+          facilisis, sem quam luctus augue, ut posuere neque sem vitae neque.'
+      image: 'example'
+    -
+      name: 'Feature #3'
+      text: 'Vitae tortor. Fusce iaculis. Aliquam rhoncus, diam quis tincidunt
+          facilisis, sem quam luctus augue, ut posuere neque sem vitae neque.'
+      image: 'example'
+
+  # If you don't want to write about your features just yet, you can set
+  # this placeholder instead.
+  empty: 'There are no features display just yet, stay tuned for updates!'
+
+# Write your copy for the "Feedback" panel
+feedback:
+  
+  # Write one or more headlines to A/B test.
+  headlines:
+    - 'We Want Your Feedback!'
+  
+  # Write one or more intros to A/B test.
+  intros:
+    - "We're trying the build the best experience for you.  As we progress through the different stages of design and development, we want to make sure we're capturing your feedback along the way."
+    - "We're going to build the best experience on the web, and we need your help. We want your feedback as early as possible on the features we have planned."
+  
+  # Write one or more Call To Actions to A/B test. Ask the user to click the concept art below.
+  call_to_actions:
+    - 'Click one of the images below to comment on our concepts.'
+
+  # Add some concept images. The name is shown as a tooltip, and the url can be anything you
+  # like, so long as it will fit nicely in a DOMWindow iframe. Usually, the url should be
+  # the large version of your concept image, but you could also use a service like Notable.com
+  # to collect some early feedback from your users.user 
+  #
+  # To add your concepts:
+  #   1. Save the images as public/images/themes/<your theme>/concepts/*_large.png
+  #   2. Run 'bundle exec rake concept:thumbs' to generate thumbnail versions.
+  #   3. Include them here, where name is the part of the filename prepending _<size>.png
+  concepts:
+    -
+      name: 'Concept 1'
+      image: 'example'
+      url: 'https://zurb.notableapp.com/posts/17215#annotate'
+    -
+      name: 'Concept 2'
+      image: 'example'
+      url: 'https://zurb.notableapp.com/posts/17215#annotate'
+    -
+      name: 'Concept 3'
+      image: 'example'
+      url: 'https://zurb.notableapp.com/posts/17215#annotate'
+
+  # If you don't have any concepts yet, just fill in this placeholder text instead
+  empty: 'There are no concepts display just yet, stay tuned for updates!'
+
+# Write your copy for the "Blog" panel
+blog:
+  # Write one or more headlines to A/B test.
+  headlines:
+    - 'Development Blog'
+    - 'News'
+    - 'Latest Updates'
+  
+  # If there are no blog posts in your feed... (or you have yet to run 'rake blog:update')
+  empty: 'There is no news to display just yet, stay tuned for updates!'
+
+# Write your copy for the page footer - wooh, almost done!
+footer:
+
+  # Add some links to other sites in your network, social networking profiles, "Email Us",
+  # or whatever else you like along those lines. Optional.
+  network:
+    -
+      label: 'Twitter'
+      url: 'http://twitter.com/agoragames'
+    -
+      label: 'Agora Games'
+      url: 'http://agoragames.com'
+      
+  # Add a copyright message to display
+  copyright: 'Copyright &copy; 2011 Your Name'
+
+# These messages are displayed when the user has entered an email address and clicked
+# submit.
+flash_messages:
+  email_success: 'Thank you! We promise a nice surprise soon.'
+  email_invalid: 'The format of the email seems odd.'
+  email_blank: "But there is no point if you don't tell us your email."

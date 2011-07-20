@@ -1,0 +1,140 @@
+body.bp
+  +blueprint-typography(true)
+  +blueprint-utilities
+
+form.bp
+  +blueprint-form
+
+body.coming-soon
+
+  p
+    font-size: 1.2em
+  a, a:visited
+    color: #0066CC
+    text-decoration: none
+
+  h1,h2,h3,h4,h5
+    color: #fff
+  h1
+    font-size: 2.0em
+    font-weight: bolder
+
+  #container
+    .rule
+      height: 18px
+      top: 4px
+      position: relative
+      margin-top: 48px
+    .rule.style1
+      background: #FFBF00
+      width: 529px
+      margin-left: 24px
+    .rule.style2
+      background: #00D0FF
+      width: 401px
+      margin-right: 24px
+      right: 1px
+    .rule.style3
+      background: #FBABFF
+      margin-right: 24px
+      width: 401px
+      right: 1px
+    .rule.style4
+      background: #B9FF73
+      width: 529px
+      right: 1px
+      margin-left: 24px
+    #header
+      margin-left: 24px
+      #logo
+        h1
+          color: #000
+    #bg-header
+      @include background-image(linear-gradient(color-stops(#DEECFF, white)))
+      width: 100%
+      height: 49px
+      position: relative
+      margin-bottom: 48px
+    .panel
+      background-color: rgba(0,0,0,0.5)
+      padding-top: 16px
+      padding-bottom: 24px
+      .content
+        padding-left: 10px
+        padding-right: 10px
+    #left
+      .panel
+        margin-left: 24px
+        width: 528px
+      #email_signup
+      #features
+        p
+          font-size: 0.99em
+          margin-bottom: 24px
+        img.feature
+          margin: 10px
+
+        p.feature:nth-child(odd)
+          clear: right
+        p.feature:nth-child(even)
+          clear: left
+
+        img.feature:nth-child(odd)
+          float: right
+        img.feature:nth-child(even)
+          float: left
+
+        h3.feature:nth-child(odd)
+          float: right
+        h3.feature:nth-child(even)
+          float: left
+
+    #right
+      .panel
+        margin-right: 24px
+        width: 399px
+      #feedback
+        .gallery
+          text-align: center
+          .thumb
+            margin-left: 5px
+            margin-right: 5px
+      #blog
+        .blog_post
+          margin-bottom: 15px
+          margin-top: 15px
+        h3
+          margin-bottom: 4px
+        em
+          color: #c4c4c4
+        p
+          font-size: 0.99em
+          margin-bottom: 0
+          margin-top: 4px
+        a
+          font-weight: bolder
+    #footer
+      margin-left: 24px
+      margin-right: 24px
+      margin-top: 96px
+      margin-bottom: 18px
+      #network
+        +column(14)
+        a
+          margin-left: 10px
+          margin-right: 10px
+      #copyright
+        +column(10, true)
+        color: #c4c4c4
+
+
+body.two-col
+
+  #container
+    +container
+  #header, #footer
+    +column($blueprint-grid-columns)
+  #left
+    +column(14)
+  #right
+    +column(10, true)
