@@ -5,10 +5,15 @@
 # Set the name of the product you are launching soon
 app_name: 'My Latest Invention'
 
-# These credentials will allow you into /backstage, where
-# you can download a CSV of signups.
+# These credentials will allow you into /backstage, that uses basic http auth,
+# where you can download a CSV of signups.
 admin_username: 'admin'
 admin_password: 'admin'
+
+# Hide the entire application behind HTTP Basic?
+# If true, the credentials defined in admin_username and admin_password
+# will be needed to access not only /backstage but any part of the application.
+http_basic: false
 
 # A Redis connection is required for storing split test results and caching
 # blog posts from your feed.
@@ -17,9 +22,6 @@ redis:
   password:
   host:
   port:
-
-# Hide the entire application behind HTTP Basic?
-http_basic: false
 
 # Is this application running on Heroku? If enabled, ActiveRecord
 # will rely on ENV['DATABASE_URL'] for PostgreSQL instead of the
