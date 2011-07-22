@@ -26,8 +26,8 @@
       %h2= features :headline
       - if features(:items).empty?
         %em= features :empty
-      - features(:items).each do |feature|
-        %div{:class => "feature #{cycle :odd, :even}"}
+      - features(:items).each_with_index do |feature, i|
+        %div{:id => "feature_#{i+1}", :class => "feature #{cycle :odd, :even}"}
           - if feature['image']
             %img.image(src = "/images/themes/#{@app_theme}/features/#{feature['image']}.png")
           %h3.name= feature['name']

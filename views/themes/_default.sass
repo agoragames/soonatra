@@ -74,27 +74,27 @@ body.coming-soon
       #email_signup
       #features
         .feature
+          clear: both
+          padding: 10px 0
           img.image
-            margin: 10px
+            margin: 0 10px 10px 10px
           h3.name
           p.text
-            font-size: 0.99em
-            margin-bottom: 24px
-          &.odd  
+            margin-bottom: 0
+          &.odd
+            img.image
+              float: left
+            h3.name
+              text-align: left
+            p.text
+              text-align: left
+          &.even
             img.image
               float: right
             h3.name
-              float: right
+              text-align: right
             p.text
-              clear: right
-          &.even    
-            img.image
-              float: left
-            h3.name.even
-              float: left
-            p.text
-              clear: left
-
+              text-align: right
 
     #right
       .panel
