@@ -9,12 +9,15 @@ body.coming-soon
 
   p
     font-size: 1.2em
+    text-align: left
+    
   a, a:visited
     color: #0066CC
     text-decoration: none
 
   h1,h2,h3,h4,h5
     color: #fff
+    text-align: left
   h1
     font-size: 2.0em
     font-weight: bolder
@@ -51,14 +54,16 @@ body.coming-soon
           color: #000
     #bg-header
       @include background-image(linear-gradient(color-stops(#DEECFF, white)))
+      background-color: white
       width: 100%
       height: 49px
       position: relative
       margin-bottom: 48px
     .panel
-      background-color: rgba(0,0,0,0.5)
+      background-color: #CCC
       padding-top: 16px
       padding-bottom: 24px
+      text-align: left
       .content
         padding-left: 10px
         padding-right: 10px
