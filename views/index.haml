@@ -27,13 +27,11 @@
       - if features(:items).empty?
         %em= features :empty
       - features(:items).each do |feature|
-        %img.feature{ :src => "/images/themes/#{@app_theme}/features/#{feature['image']}.png" }
-        %h3.feature= feature['name']
-        %br
-        %p.feature= feature['text']
-        .clear
-        %br
-        %br
+        %div{:class => "feature #{cycle :odd, :even}"}
+          - if feature['image']
+            %img.image(src = "/images/themes/#{@app_theme}/features/#{feature['image']}.png")
+          %h3.name= feature['name']
+          %p.text=  feature['text']
 #right
   .rule.style2
   #feedback.panel

@@ -73,26 +73,28 @@ body.coming-soon
         width: 528px
       #email_signup
       #features
-        p
-          font-size: 0.99em
-          margin-bottom: 24px
-        img.feature
-          margin: 10px
+        .feature
+          img.image
+            margin: 10px
+          h3.name
+          p.text
+            font-size: 0.99em
+            margin-bottom: 24px
+          &.odd  
+            img.image
+              float: right
+            h3.name
+              float: right
+            p.text
+              clear: right
+          &.even    
+            img.image
+              float: left
+            h3.name.even
+              float: left
+            p.text
+              clear: left
 
-        p.feature:nth-child(odd)
-          clear: right
-        p.feature:nth-child(even)
-          clear: left
-
-        img.feature:nth-child(odd)
-          float: right
-        img.feature:nth-child(even)
-          float: left
-
-        h3.feature:nth-child(odd)
-          float: right
-        h3.feature:nth-child(even)
-          float: left
 
     #right
       .panel

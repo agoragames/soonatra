@@ -211,6 +211,13 @@ class ComingSoon < Sinatra::Base
         APP_CONFIG['footer']['network']
       end
     end
+    
+    # ex: class => cycle(:even, :odd)
+    def cycle(*args)
+      @cycle_index ||= -1 # to start in 0
+      @cycle_index = (@cycle_index >= args.size-1) ? 0 : @cycle_index + 1
+      args[@cycle_index].to_s
+    end
 
   end
 end
